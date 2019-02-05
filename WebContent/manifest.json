@@ -1,0 +1,48 @@
+{
+  "sap.app" : {
+     "id" : "smax.batch38.Product",
+     "dataSources" : {
+     	"smaxproducts" : {
+     	    "uri" : "proxy/http/cloud.mydomain.com:8700/sap/opu/odata/sap/ZGW_B38_PRODUCT_SRV/"
+     	}
+     }
+  },
+  "sap.ui5" : {
+  			"rootView" : "smax.batch38.Product.view.SApp",
+  			"models" : {
+  			   "" : {
+  			     "dataSource" : "smaxproducts"
+  			   }
+  			},
+			"routing" : {
+				"config" : {
+					"routerClass" : "sap.m.routing.Router",
+					"viewType" : "XML",
+					 "controlId" : "idsApp",
+					 "viewPath" : "smax.batch38.Product.view"					
+				},
+				"routes" : [
+					{
+					  "pattern" : "",	
+					  "name" : "home",
+					  "target" : ["mPage", "dPage"]					  
+					},
+					{
+					  "pattern" : "toPage2/{pid}",
+					  "name" : "secondPage",
+					  "target" : ["mPage", "dPage"]					  
+					}
+					],
+					"targets" : {
+					   "mPage" : {
+					     "viewName" : "Page1",
+					     "controlAggregation" : "masterPages"
+					   },
+					   "dPage" : {
+					     "viewName" : "Page2",
+					     "controlAggregation" : "detailPages"
+					   }
+					}
+			}
+  }
+}

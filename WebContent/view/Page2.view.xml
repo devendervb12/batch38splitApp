@@ -1,0 +1,25 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="smax.batch38.Product.controller.Page2"
+		xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Page2">
+				<content>
+				<VBox>
+				
+				   <Text text="{ProductID}"/>
+				   <Text text="{Name}"/>
+				   <Text text="{Description}"/>
+				   <Text text="{Category}"/> 
+				  </VBox> 
+					
+				</content>
+				<footer>
+				   <Bar>
+				      <contentRight>
+				         <Button text="Create" press="onCreate"/>
+				         <Button text="Update" press="onUpdate"/>
+				         <Button text="Delete" press="onDelete"/>
+				      </contentRight>
+				   </Bar>
+				</footer>
+			</Page>
+</core:View>
