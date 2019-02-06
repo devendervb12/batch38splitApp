@@ -87,6 +87,57 @@ sap.ui.controller("smax.batch38.Product.controller.Page2", {
 		});
 		oDialog.setModel(this.getOwnerComponent().getModel());
 		oDialog.open();
+	},
+	onUpdate : function(){
+
+		var oController = this;
+		
+		var oDialog = new sap.m.Dialog({
+			title : "Update Name of the Product",
+			content : [
+				new sap.m.Label({text : "Product ID"}),
+				new sap.m.Input({editable : false, value : oController.getView().byId("idobjHeader").getText()}),
+				new sap.m.Label({text : "Name"}),
+				new sap.m.Input({value : oController.getView().byId("idobjName").getText()})
+							
+			],
+			buttons : [
+				new sap.m.Button({ text : "Update and Close", press : function(){
+					
+					var data = {
+							Name : oDialog.getContent()[3].getValue()
+					}
+					var oModel = oDialog.getModel();
+					// /ProductSet('key')
+					oModel.update("/ProductSet('"+oController.getView().byId("idobjHeader").getText()+"')",
+					 data,
+					 {
+						success : function(){
+							sap.m.MessageToast.show("Data Updated");
+						},
+						error : function(){
+							sap.m.MessageToast.show("Data not Updated");
+						}
+					 }
+					)
+					oDialog.close();
+				}})
+				
+			]
+		});
+		oDialog.setModel(this.getOwnerComponent().getModel());
+		oDialog.open();
+	},
+	onDelete : function(){
+		var oModel = this.getOwnerComponent().getModel();
+		oModel.remove("/ProductSet('"+this.getView().byId("idobjHeader").getText()+"')",  {
+			success : function(){
+				sap.m.MessageToast.show("Data Deleted");
+			},
+			error : function(){
+				sap.m.MessageToast.show("Data not Deleted");
+			}
+		 })
 	}
 
 });

@@ -5,8 +5,8 @@
 				<content>
 				<VBox>
 				
-				   <Text text="{ProductID}"/>
-				   <Text text="{Name}"/>
+				   <Text text="{ProductID}" id="idobjHeader"/>
+				   <Text text="{Name}" id="idobjName"/>
 				   <Text text="{Description}"/>
 				   <Text text="{Category}"/> 
 				  </VBox> 
